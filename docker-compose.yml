@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      - SERVICES=dynamodb
+      - DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    ports:
+      - "4566:4566"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:4566/health" ]
+      interval: 5s
+      timeout: 3s
+      retries: 12
