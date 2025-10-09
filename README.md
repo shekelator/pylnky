@@ -50,6 +50,12 @@ uv run pytest
 
 The test suite will skip the LocalStack test if the LocalStack endpoint is not reachable on `localhost:4566`. If you want the tests to fail instead of skipping, remove the skip condition in `tests/test_dynamodb_setup.py`.
 
+To see items in the table, as currently running in LocalStack container, use
+
+```
+aws --endpoint-url http://localhost:4566 dynamodb scan --table-name URLs --region us-east-1
+```
+
 ## Running application "locally"
 
 ```
